@@ -8,6 +8,10 @@
 
 require 'faker'
 
+puts 'Finished with the users!'
+
+b = (1..100).to_a.shuffle
+
 puts 'Creating 100 fake users...'
 100.times do
   user = User.new(
@@ -18,10 +22,6 @@ puts 'Creating 100 fake users...'
   )
   user.save!
 end
-
-puts 'Finished with the users!'
-
-b = (1..100).to_a.shuffle
 
 puts 'Creating 100 fake tractors...'
 100.times do
