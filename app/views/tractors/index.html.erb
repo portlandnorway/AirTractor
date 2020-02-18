@@ -5,7 +5,7 @@
 
     <% @tractors.each do |tractor| %>
 
-    <div class="col-md-4">
+    <div class="col-md-4 card-container-adjustments">
 
       <div class="card-product card-adjustments">
         <% if tractor.photo.attached? %>
@@ -23,15 +23,3 @@
     <% end %>
   </div>
 </div>
-
-<nav class="navbar fixed-bottom navbar-light bg-light navbar-lewagon">
-  <a class="navbar-brand" href="#">
-    <i class="fas fa-map-marked-alt"></i>
-  </a>
-  <a class="navbar-brand" href="#">
-    <i class="fas fa-plus"></i>
-</a>
-  <a class="navbar-brand" href="#">
-    <img class="avatar" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
-  </a>
-</nav>
