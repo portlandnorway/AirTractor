@@ -24,11 +24,13 @@ end
 
 puts 'Finished with the users!'
 
+tractor_details = ["Full-size spare tire w/aluminum alloy wheel", "Back-up camera", "Carpeted cargo area", "New York city colors" "Silver accent IP trim finisher -inc: silver shifter finisher", "Back-up camera", "Water-repellent windshield & front door glass", "Floor carpeting", "DVD System", "MP3 (Single Disc)", "Tow Package", "DVD plater", "Cassette Player", "Bucket Seats", "Cassette Player", "Leather Interior", "AM/FM Stereo", "Third Row Seats", "Turbo-mode", "Dracula mode"]
+
 puts 'Creating 100 fake tractors...'
 100.times do
   tractor = Tractor.new(
     name: Faker::FunnyName.name,
-    details: Faker::Vehicle.car_options,
+    details: tractor_details.sample(3),
     reward: Faker::Number.number(digits: 3),
     user_id: b.pop,
     address: Faker::Address.street_address
