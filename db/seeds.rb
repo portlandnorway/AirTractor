@@ -8,8 +8,6 @@
 
 require 'faker'
 
-puts 'Finished with the users!'
-
 b = (1..100).to_a.shuffle
 
 puts 'Creating 100 fake users...'
@@ -18,10 +16,13 @@ puts 'Creating 100 fake users...'
     email: Faker::Internet.email,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    phone_number: Faker::PhoneNumber.subscriber_number(length: 8)
+    phone_number: Faker::PhoneNumber.subscriber_number(length: 8),
+    password: 'password'
   )
   user.save!
 end
+
+puts 'Finished with the users!'
 
 puts 'Creating 100 fake tractors...'
 100.times do
