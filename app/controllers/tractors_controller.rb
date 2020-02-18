@@ -14,7 +14,7 @@ class TractorsController < ApplicationController
 
   def create
     @tractor = Tractor.new(tractor_params)
-    raise
+    @tractor.user = current_user
     @tractor.save
     redirect_to root_path
   end
@@ -26,7 +26,7 @@ class TractorsController < ApplicationController
   end
 
   def tractor_params
-    params.require(:tractor).permit(:name, :address, :reward, :details, :photo)
+    params.require(:tractor).permit(:name, :address, :reward, :details, :photo, :user)
   end
 
 end
