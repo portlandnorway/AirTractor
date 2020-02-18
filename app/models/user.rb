@@ -10,6 +10,6 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
 
 
-  has_one_attached :photo
+  has_one_attached :avatar
 
 end

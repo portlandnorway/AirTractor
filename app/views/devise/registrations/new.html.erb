@@ -12,6 +12,18 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "last-name" }%>
+    <%= f.input :phone_number,
+                hint: "Use only numbers",
+                required: false,
+                input_html: { autocomplete: "phone-number" } %>
+    <div class=”field”>
+      <%= f.file_field :avatar,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "email" }%> <br>
+    (Adding an avatar makes you 17x more likely to rent a tractor!)
+    </div>
+    <br>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
