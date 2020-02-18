@@ -16,9 +16,7 @@
         <div class="card-product-infos">
           <h2><%= link_to tractor.name, tractor %></h2>
           <h3><%= tractor.reward %> kr</h3>
-          <%= tractor.details.each do |detail| %>
-          <p><%= tractor.detail %> kr</p>
-          <% end %>
+          <p><%= tractor.details %></p>
         </div>
       </div>
     </div>

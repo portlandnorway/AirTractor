@@ -8,7 +8,10 @@
 
 require 'faker'
 
-b = (1..100).to_a.shuffle
+puts "Clear the db"
+Booking.destroy_all
+Tractor.destroy_all
+User.destroy_all
 
 puts 'Creating 100 fake users...'
 100.times do
@@ -24,15 +27,13 @@ end
 
 puts 'Finished with the users!'
 
-tractor_details = ["Full-size spare tire w/aluminum alloy wheel", "Back-up camera", "Carpeted cargo area", "New York city colors" "Silver accent IP trim finisher -inc: silver shifter finisher", "Back-up camera", "Water-repellent windshield & front door glass", "Floor carpeting", "DVD System", "MP3 (Single Disc)", "Tow Package", "DVD plater", "Cassette Player", "Bucket Seats", "Cassette Player", "Leather Interior", "AM/FM Stereo", "Third Row Seats", "Turbo-mode", "Dracula mode"]
-
 puts 'Creating 100 fake tractors...'
 100.times do
   tractor = Tractor.new(
     name: Faker::FunnyName.name,
-    details: tractor_details.sample(3),
+    details: Faker::Lorem.paragraph_by_chars(number: 50, supplemental: false),
     reward: Faker::Number.number(digits: 3),
-    user_id: b.pop,
+    user: User.all.sample,
     address: Faker::Address.street_address
   )
   tractor.save!
@@ -40,13 +41,13 @@ end
 
 puts 'Finished with the tractors!'
 
-a = (1..100).to_a.shuffle
-
 puts 'Creating 20 fake booking...'
 20.times do
+  t = Tractor.all.sample
+  clean_users = User.all.reject { |user| user == t.user }
   booking = Booking.new(
-    tractor_id: a.pop,
-    user_id: rand(1..100)
+    tractor: t,
+    user: clean_users.sample
   )
   booking.save!
 end
