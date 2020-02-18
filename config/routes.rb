@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   end
 
   root :to => redirect("/users/sign_in")
-  resources :tractors, only: %i[show new create]
+  resources :tractors, only: %i[show new create] do
+    resources :bookings, only: [ :new, :create ]
+  end
+  resources :bookings, only: :show
 end
