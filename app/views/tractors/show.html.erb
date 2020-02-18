@@ -10,7 +10,7 @@
       <div class="card-body">
         <h5 class="card-title"><%= @tractor.name %></h5>
         <p class="card-text"><%= @tractor.reward %>kr <br> <%= @tractor.details %></p>
-        <a href="#" class="btn btn-primary">Rent this tractor</a>
+        <%= link_to 'Rent this tractor', tractor_bookings_path(@tractor), method: :post, class:"btn btn-primary" %>
       </div>
     </div>
     </div>
