@@ -31,4 +31,5 @@ group :development, :test do
   gem 'faker'
 end
 
-
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'cloudinary', '~> 1.12.0'
