@@ -12,7 +12,16 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+          <div class="logo">
+          <%= image_tag("tractorlogo.jpg", height: '100%', width: '100%')%>
+          </div>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
