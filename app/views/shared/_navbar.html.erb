@@ -2,11 +2,20 @@
 </div>
 
 <nav class="navbar fixed-bottom navbar-light navbar-lewagon">
+
   <div class="navbar-icons">
-    <%= link_to root_path, class: "navbar-brand navbar-icons-nomargin" do %>
-      <i class="fas fa-tractor"></i>
-    <% end %>
+    <% url = request.path_info %>
+    <% if url.include?('map') %>
+      <%= link_to root_path, class: "navbar-brand navbar-icons-nomargin" do %>
+        <i class="fas fa-tractor"></i>
+      <% end %>
+    <% else %>
+      <%= link_to map_path, class: "navbar-brand navbar-icons-nomargin" do %>
+        <i class="fas fa-map-marked-alt"></i>
+      <% end %>
+    <% end  %>
   </div>
+
   <div class="navbar-icons">
     <%= link_to new_tractor_path, class: "navbar-brand navbar-icons-nomargin" do %>
       <i class="fas fa-plus"></i>
