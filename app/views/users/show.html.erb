@@ -1,7 +1,8 @@
-<h1>The tractor dashboard</h1>
-<div class="container">
+<div class="header-wrapper">
+  <h1>The tractor dashboard</h1>
+</div>
+<div class="container-wrapper d-flex justify-content-between">
   <div class="current-user">
-    <h3>Hello <%= current_user.first_name.capitalize %></h3>
     <p>Name: <%= current_user.first_name%> <%= current_user.last_name %> </p>
     <p>Phone: <%= current_user.phone_number %></p>
     <p>Email: <%= current_user.email %></p>
@@ -15,8 +16,10 @@
   </div>
 </div>
 
-<h3>Your current bookings</h3>
-<p>Number of bookings: <%= current_user.bookings.length %></p>
+<div class="header-wrapper">
+  <h3>Your current bookings</h3>
+  <p>Number of bookings: <%= current_user.bookings.length %></p>
+</div>
 <div class="container">
   <div class="row">
   <% current_user.bookings.each do |booking| %>
@@ -27,8 +30,10 @@
   </div>
 </div>
 
-<h3>Your current tractors</h3>
-<p>Number of tractors listed: <%= current_user.tractors.length %></p>
+<div class="header-wrapper">
+  <h3>Your current tractors</h3>
+  <p>Number of tractors listed: <%= current_user.tractors.length %></p>
+</div>
 <div class="container">
   <div class="row">
   <% current_user.tractors.each do |tractor| %>
