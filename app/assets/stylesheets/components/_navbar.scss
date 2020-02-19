@@ -13,10 +13,6 @@ $navbar-height: 70px;
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
-
 .navbar-icons .fas {
   font-size: 30px;
 }
@@ -29,4 +25,8 @@ $navbar-height: 70px;
   height: $navbar-height;
   width: 100%;
   margin-top: 10px;
+}
+
+.navbar-icons-nomargin {
+  margin-right: 0;
 }

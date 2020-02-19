@@ -3,22 +3,22 @@
 
 <nav class="navbar fixed-bottom navbar-light navbar-lewagon">
   <div class="navbar-icons">
-    <a class="navbar-brand" href=<%= root_path %>>
-    <i class="fas fa-tractor"></i>
-  </div>
-  </a>
-  <div class="navbar-icons">
-    <a class="navbar-brand" href=<%= new_tractor_path %>>
-    <i class="fas fa-plus"></i>
+    <%= link_to root_path, class: "navbar-brand navbar-icons-nomargin" do %>
+      <i class="fas fa-tractor"></i>
+    <% end %>
   </div>
   <div class="navbar-icons">
-    </a>
-    <a class="navbar-brand" href=<%= user_path([:id]) %>>
+    <%= link_to new_tractor_path, class: "navbar-brand navbar-icons-nomargin" do %>
+      <i class="fas fa-plus"></i>
+    <% end %>
+  </div>
+  <div class="navbar-icons">
+    <%= link_to user_path(current_user), class: "navbar-brand navbar-icons-nomargin" do %>
       <% if current_user.avatar.attached? %>
         <%= cl_image_tag(current_user.avatar.key, class: "avatar", alt: "avatar", crop: :fill, gravity: :face) %>
       <% else  %>
         <i class="far fa-user-circle"></i>
       <% end %>
-  </a>
+    <% end %>
   </div>
 </nav>
