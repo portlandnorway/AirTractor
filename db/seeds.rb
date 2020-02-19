@@ -8,7 +8,7 @@
 
 require 'faker'
 
-puts "Clear the db"
+puts "Clearing the db..."
 Booking.destroy_all
 Tractor.destroy_all
 User.destroy_all
@@ -27,22 +27,24 @@ end
 
 puts 'Finished with the users!'
 
-puts 'Creating 100 fake tractors...'
-100.times do
+addresses = ["Kirsten Flagstads Plass 1, 0150 Oslo", "Karl Johans gate 11, 0154 Oslo", "Slottsplassen 1, 0010 Oslo", "Pilestredet 72, 0354 Oslo", "Seilduksgata 15A, 0553 Oslo", "Lørenveien 38, 0585 Oslo", "Sverresgate 5, 0652 Oslo", "Ekebergveien 1, 0192 Oslo", "Ulvenveien 110, 0665 Oslo"]
+
+puts 'Creating 9 fake tractors...'
+9.times do
   tractor = Tractor.new(
     name: Faker::FunnyName.name,
     details: Faker::Lorem.paragraph_by_chars(number: 50, supplemental: false),
     reward: Faker::Number.number(digits: 3),
     user: User.all.sample,
-    address: Faker::Address.street_address
+    address: addresses.pop
   )
   tractor.save!
 end
 
 puts 'Finished with the tractors!'
 
-puts 'Creating 20 fake booking...'
-20.times do
+puts 'Creating 9 fake bookings...'
+9.times do
   t = Tractor.all.sample
   clean_users = User.all.reject { |user| user == t.user }
   booking = Booking.new(
