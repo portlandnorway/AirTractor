@@ -13,6 +13,5 @@ class BookingsController < ApplicationController
   end
 
   def show
-    raise
   end
 end

@@ -1,0 +1,62 @@
+<h1>The tractor dashboard</h1>
+<div class="container">
+  <div class="current-user">
+    <h3>Hello <%= current_user.first_name.capitalize %></h3>
+    <p>Name: <%= current_user.first_name%> <%= current_user.last_name %> </p>
+    <p>Phone: <%= current_user.phone_number %></p>
+    <p>Email: <%= current_user.email %></p>
+  </div>
+  <div class="profile-avatar">
+    <% if current_user.avatar.attached? %>
+    <p><%= cl_image_tag current_user.avatar.key %></p>
+    <% else %>
+    <i class="far fa-user-circle"></i>
+    <% end %>
+  </div>
+</div>
+
+<h3>Your current bookings</h3>
+<p>Number of bookings: <%= current_user.bookings.length %></p>
+<div class="container">
+  <div class="row">
+  <% current_user.bookings.each do |booking| %>
+    <div class="col-md-4 card-container-adjustments">
+      <div class="card-product card-adjustments">
+          <% if booking.tractor.photo.attached? %>
+          <%= cl_image_tag booking.tractor.photo.key %>
+          <% else %>
+          <img src="https://images.unsplash.com/photo-1530267981375-f0de937f5f13?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="">
+          <% end %>
+          <div class="card-product-infos">
+            <h2><%= link_to booking.tractor.name, booking %></h2>
+            <h3><%= booking.tractor.reward %> kr</h3>
+            <p><%= booking.tractor.details %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<h3>Your current tractors</h3>
+<p>Number of tractors listed: <%= current_user.tractors.length %></p>
+<div class="container">
+  <div class="row">
+  <% current_user.tractors.each do |tractor| %>
+    <div class="col-md-4 card-container-adjustments">
+      <div class="card-product card-adjustments">
+          <% if tractor.photo.attached? %>
+          <%= cl_image_tag tractor.photo.key %>
+          <% else %>
+          <img src="https://images.unsplash.com/photo-1530267981375-f0de937f5f13?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="">
+          <% end %>
+          <div class="card-product-infos">
+            <h2><%= link_to tractor.name, tractor %></h2>
+            <h3><%= tractor.reward %> kr</h3>
+            <p><%= tractor.details %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
