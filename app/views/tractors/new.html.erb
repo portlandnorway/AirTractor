@@ -1,14 +1,18 @@
+<div class="row">
+
 <div class="container">
   <div class="row">
-    <div class="col">
-      <%= simple_form_for @tractor do |f| %>
-        <%= f.input :name %>
-        <%= f.input :address %>
-        <%= f.input :reward %>
-        <%= f.input :details %>
-        <%= f.input :photo, as: :file %>
-        <%= f.button :submit, class: "btn-primary" %>
-      <% end %>
+    <div class="col-12 col-md-6 offset-md-3">
+      <div class="col">
+        <%= simple_form_for @tractor do |f| %>
+          <%= f.input :name %>
+          <%= f.input :address %>
+          <%= f.input :reward %>
+          <%= f.input :details %>
+          <%= f.input :photo, as: :file %>
+          <%= f.button :submit, class: "btn-primary" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
