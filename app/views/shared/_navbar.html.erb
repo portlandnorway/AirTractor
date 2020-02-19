@@ -14,7 +14,11 @@
   <div class="navbar-icons">
     </a>
     <a class="navbar-brand" href=<%= user_path([:id]) %>>
-    <i class="far fa-user-circle"></i>
+      <% if current_user.avatar.attached? %>
+        <%= cl_image_tag(current_user.avatar.key, class: "avatar", alt: "avatar", crop: :fill, gravity: :face) %>
+      <% else  %>
+        <i class="far fa-user-circle"></i>
+      <% end %>
   </a>
   </div>
 </nav>
