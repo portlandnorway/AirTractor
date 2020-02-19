@@ -1,9 +1,12 @@
+$navbar-height: 70px;
+
 .navbar-lewagon {
   justify-content: space-between;
   background-color: #e84545;
   padding-left: 50px;
   padding-right: 50px;
   text-align: center;
+  height: $navbar-height;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -16,4 +19,14 @@
 
 .navbar-icons .fas {
   font-size: 30px;
+}
+
+.navbar-icons .far {
+  font-size: 30px;
+}
+
+.navbar-placeholder {
+  height: $navbar-height;
+  width: 100%;
+  margin-top: 10px;
 }
