@@ -5,6 +5,18 @@ class TractorsController < ApplicationController
     @tractors = Tractor.all
   end
 
+  def map
+    @tractors = Tractor.geocoded #returns flats with coordinates
+
+    @markers = @tractors.map do |tractor|
+      {
+        lat: tractor.latitude,
+        lng: tractor.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { tractor: tractor })
+      }
+    end
+  end
+
   def show
   end
 
