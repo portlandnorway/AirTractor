@@ -12,9 +12,12 @@
     <i class="fas fa-plus"></i>
   </div>
   <div class="navbar-icons">
-    </a>
     <a class="navbar-brand" href=<%= user_path([:id]) %>>
+    <% if current_user.avatar.attached? %>
+    <%= cl_image_tag current_user.avatar.key %>
+    <% else %>
     <i class="far fa-user-circle"></i>
   </a>
+  <% end %>
   </div>
 </nav>
