@@ -20,7 +20,7 @@
 <div class="container">
   <div class="row">
   <% current_user.bookings.each do |booking| %>
-    <div class="col-md-4 card-container-adjustments">
+    <div class="col-sm-12 col-md-6 col-lg-4 card-container-adjustments">
       <div class="card-product card-adjustments">
           <% if booking.tractor.photo.attached? %>
           <%= cl_image_tag booking.tractor.photo.key %>
@@ -43,7 +43,7 @@
 <div class="container">
   <div class="row">
   <% current_user.tractors.each do |tractor| %>
-    <div class="col-md-4 card-container-adjustments">
+    <div class="col-sm-12 col-md-6 col-lg-4 card-container-adjustments">
       <div class="card-product card-adjustments">
           <% if tractor.photo.attached? %>
           <%= cl_image_tag tractor.photo.key %>
