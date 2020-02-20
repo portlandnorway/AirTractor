@@ -1,5 +1,7 @@
 <div class="row">
-
+<div class="logo">
+  <%= image_tag("tractorlogo.png", height: '100%', width: '100%')%>
+  </div>
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-6 offset-md-3">
@@ -10,11 +12,12 @@
           <%= f.input :reward %>
           <%= f.input :details %>
           <%= f.input :photo, as: :file %>
-          <%= f.button :submit, class: "btn-primary" %>
+          <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>
+        <div>
+          <%= link_to "Back", root_path, class:"btn btn-primary" %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-<%= link_to "Back", root_path %>
