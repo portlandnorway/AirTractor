@@ -5,7 +5,7 @@
 
   <div class="navbar-icons">
     <% url = request.path_info %>
-    <% if url.include?('map') %>
+    <% if url.include?('map') || params[:id].present? || url.include?('new') %>
       <%= link_to root_path, class: "navbar-brand navbar-icons-nomargin" do %>
         <i class="fas fa-tractor"></i>
       <% end %>
