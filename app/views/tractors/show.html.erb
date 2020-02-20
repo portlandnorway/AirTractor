@@ -10,16 +10,17 @@
         <div class="card-body">
           <h5 class="card-title"><%= @tractor.name %></h5>
           <p class="card-text"><%= @tractor.reward %>kr <br> <%= @tractor.details %></p>
-
-          <div class="widget-content" data-unavailable="<%= @tractor.unavailable_dates.to_json %>">
-            <div class="dates">
-              <%= simple_form_for([@tractor, @booking]) do |f| %>
-                <%= f.input :start_date, as: :string, label: "Dates", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
-                <%= f.input :end_date, as: :string, label: '&nbsp;'.html_safe, placeholder: "To", disabled: true, wrapper_html: { class: "inline_field_wrapper" } %>
-                <%= f.submit "Rent this tractor", class: "btn btn-primary btn-lg btn-block btn-booking" %>
-              <% end %>
+          <% if @tractor.user_id != current_user.id %>
+            <div class="widget-content" data-unavailable="<%= @tractor.unavailable_dates.to_json %>">
+              <div class="dates">
+                <%= simple_form_for([@tractor, @booking]) do |f| %>
+                  <%= f.input :start_date, as: :string, label: "Dates", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
+                  <%= f.input :end_date, as: :string, label: '&nbsp;'.html_safe, placeholder: "To", disabled: true, wrapper_html: { class: "inline_field_wrapper" } %>
+                  <%= f.submit "Rent this tractor", class: "btn btn-primary btn-lg btn-block btn-booking" %>
+                <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
           <!-- link_to 'Rent this tractor', tractor_bookings_path(@tractor), method: :post, class:"btn btn-primary" -->
         </div>
       </div>
