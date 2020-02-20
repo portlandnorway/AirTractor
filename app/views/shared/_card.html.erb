@@ -7,6 +7,7 @@
   <div class="card-product-infos">
     <h2><%= link_to element.name, element %></h2>
     <h3><%= element.reward %> kr</h3>
-    <p><%= element.details %></p>
+    <p>Owner: <%= element.user.first_name %> <%= element.user.last_name %></p>
+    <p>Area: <%= element.address.split.last %></p>
   </div>
 </div>
