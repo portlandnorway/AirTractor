@@ -1,8 +1,9 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 180px 0;
-  // height: 100vh;
+  padding: 290px 0;
+  height: calc(100vh - #{$navbar-height});
+  position: relative;
 }
 
 .banner h1 {
