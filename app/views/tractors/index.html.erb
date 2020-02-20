@@ -5,14 +5,23 @@
 </div>
 
 <div class="container">
-  <div class="row" id="tractors">
-
-    <% @tractors.each do |tractor| %>
-
-    <div class="col-sm-12 col-md-6 col-lg-4 card-container-adjustments">
-
-      <%= render "shared/card", element: tractor %>
+  <div class="dropdown" id='rd'>
+    <button class="btn btn-primary dropdown-toggle mt-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Filters
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <%= link_to "Reward", root_path(q:'reward', anchor:'rd'), class: "dropdown-item" %>
+      <%= link_to "Newest", root_path(q:'newest', anchor:'rd'), class: "dropdown-item" %>
+      <%= link_to "Oldest", root_path(q:'oldest', anchor:'rd'), class: "dropdown-item" %>
     </div>
+  </div>
+
+
+  <div class="row" id="tractors">
+    <% @tractors.each do |tractor| %>
+      <div class="col-sm-12 col-md-6 col-lg-4 card-container-adjustments">
+      <%= render "shared/card", element: tractor %>
+      </div>
     <% end %>
   </div>
 </div>
