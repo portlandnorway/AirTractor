@@ -2,7 +2,15 @@ class TractorsController < ApplicationController
   before_action :find_tractor, only: %i[show]
 
   def index
-    @tractors = Tractor.all
+    if params['q'] == 'reward'
+      @tractors = Tractor.order(reward: :desc)
+    elsif params['q'] == 'oldest'
+      @tractors = Tractor.order(created_at: :asc)
+    elsif params['q'] == 'newest'
+      @tractors = Tractor.order(created_at: :desc)
+    else
+      @tractors = Tractor.all
+    end
   end
 
   def map
