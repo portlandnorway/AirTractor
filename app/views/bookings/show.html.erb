@@ -1,1 +1,29 @@
-<h1>Congratulations on your new tractor! This is a good one.</h1>
+<% messages = ["This is a badass!", "Good choise!", "You will get laid with the tractor: ", "Sunglasses on, take a seat in ", "You just booked the tractor ", "You are going for style, with "] %>
+
+<div class="text-center">
+  <h1><%= messages.sample %> "<%= current_user.bookings.last.tractor.name %>"</h1>
+  <p><%= current_user.bookings.last.tractor.reward %>kr was added to your bank account</p>
+</div>
+
+<div class="d-flex align-center">
+  <div>
+    <h3>Adress: <%= current_user.bookings.last.tractor.address %></h3>
+    <h3>Owner: <%= current_user.bookings.last.tractor.user.first_name %> <%= current_user.bookings.last.tractor.user.last_name %></h3>
+    <h3>Phone: <%= current_user.bookings.last.tractor.user.phone_number %></h3>
+    <h3>Email: <%= current_user.bookings.last.tractor.user.email %></h3>
+    <p>Note from owner: <i><%= current_user.bookings.last.tractor.details %></i></p>
+  </div>
+
+  <div>
+    <% if current_user.bookings.last.tractor.photo.attached? %>
+      <%= cl_image_tag(@tractor.photo.key, class:"card-img-top") %>
+    <% else  %>
+      <img src="https://images.unsplash.com/photo-1530267981375-f0de937f5f13?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="" width="100%" height="100%">
+      <% end %>
+  </div>
+</div>
+
+<div class="d-flex justify-content-around">
+  <%= link_to "My bookings", user_path, class:"btn btn-primary" %>
+  <%= link_to "Book more", root_path, class:"btn btn-primary" %>
+</div>
