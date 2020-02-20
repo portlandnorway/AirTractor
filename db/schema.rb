@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_124319) do
+ActiveRecord::Schema.define(version: 2020_02_20_121839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2020_02_19_124319) do
     t.bigint "tractor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "start_date"
+    t.date "end_date"
     t.index ["tractor_id"], name: "index_bookings_on_tractor_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -55,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_02_19_124319) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+    t.integer "bookings_count", default: 0, null: false
     t.index ["user_id"], name: "index_tractors_on_user_id"
   end
 
