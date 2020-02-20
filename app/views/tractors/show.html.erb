@@ -1,29 +1,32 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-9 col-lg-6">
-      <div class="card">
-        <% if @tractor.photo.attached? %>
-          <%= cl_image_tag(@tractor.photo.key, class:"card-img-top") %>
-        <% else  %>
-          <%= image_tag "https://images.unsplash.com/photo-1530267981375-f0de937f5f13?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80", class:"card-img-top" %>
-        <% end %>
-        <div class="card-body">
-          <h5 class="card-title"><%= @tractor.name %></h5>
-          <p class="card-text"><%= @tractor.reward %>kr <br> <%= @tractor.details %></p>
-          <% if @tractor.user_id != current_user.id %>
-            <div class="widget-content" data-unavailable="<%= @tractor.unavailable_dates.to_json %>">
-              <div class="dates">
-                <%= simple_form_for([@tractor, @booking]) do |f| %>
-                  <%= f.input :start_date, as: :string, label: "Dates", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
-                  <%= f.input :end_date, as: :string, label: '&nbsp;'.html_safe, placeholder: "To", disabled: true, wrapper_html: { class: "inline_field_wrapper" } %>
-                  <%= f.submit "Rent this tractor", class: "btn btn-primary btn-lg btn-block btn-booking" %>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-          <!-- link_to 'Rent this tractor', tractor_bookings_path(@tractor), method: :post, class:"btn btn-primary" -->
+<% if @tractor.photo.attached? %>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @tractor.photo.key %>')">
+<% else  %>
+  <%= image_tag "https://images.unsplash.com/photo-1530267981375-f0de937f5f13?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"%>
+<% end %>
+  <%= @tractor.name %>
+</div>
+
+<div class="card-body">
+  <div class="d-flex justify-content-between">
+    <div>
+      <h3>Reward: <%= @tractor.reward %>kr</h3>
+    </div>
+    <div>
+      <h3>Area: <%= @tractor.address.split.last  %></h3>
+    </div>
+  </div>
+  <p>Owner: <%= @tractor.user.first_name %> <%= @tractor.user.last_name %></p>
+      <% if @tractor.user_id != current_user.id %>
+        <div class="widget-content" data-unavailable="<%= @tractor.unavailable_dates.to_json %>">
+          <div class="dates">
+            <%= simple_form_for([@tractor, @booking]) do |f| %>
+              <%= f.input :start_date, as: :string, label: "Dates", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
+              <%= f.input :end_date, as: :string, label: '&nbsp;'.html_safe, placeholder: "To", disabled: true, wrapper_html: { class: "inline_field_wrapper" } %>
+              <%= f.submit "Rent this tractor", class: "btn btn-primary btn-lg btn-block btn-booking" %>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

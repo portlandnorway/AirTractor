@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-sm-12 col-lg-6 align-self-center">
       <% if current_user.bookings.last.tractor.photo.attached? %>
-        <%= cl_image_tag @tractor.photo.key, class:"booking-photo" %>
+        <%= cl_image_tag current_user.bookings.last.tractor.photo.key, class:"booking-photo" %>
       <% else  %>
         <img class="booking-photo" src="https://images.unsplash.com/photo-1530267981375-f0de937f5f13?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="">
         <% end %>
@@ -27,3 +27,5 @@
     </div>
   </div>
 </div>
+
+<% flash.now[:alert] = "#{current_user.bookings.last.tractor.reward}kr was added yo you bank account" %>
