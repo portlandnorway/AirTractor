@@ -9,7 +9,7 @@ class TractorsController < ApplicationController
     elsif params['q'] == 'newest'
       @tractors = Tractor.order(created_at: :desc)
     else
-      @tractors = Tractor.all
+      @tractors = Tractor.order(created_at: :desc)
     end
   end
 
