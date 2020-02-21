@@ -6,7 +6,7 @@
     <% if current_user.avatar.attached? %>
     <p><%= cl_image_tag(current_user.avatar.key, class: "avatar-large", alt: "avatar-large", crop: :fill, gravity: :face) %></p>
     <% else %>
-    <i class="far fa-user-circle"></i>
+    <i class="far fa-user-circle avatar-large"></i>
     <% end %>
   </div>
   <div class="current-user">
@@ -44,4 +44,6 @@
   </div>
 </div>
 
-<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<div class="d-flex justify-content-center">
+  <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"btn btn-primary btn-lg", style: "width: 90%" %>
+</div>

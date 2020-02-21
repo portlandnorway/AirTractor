@@ -1,0 +1,15 @@
+.simple_form {
+  div.input {
+    margin-bottom: 0px;
+    clear: both;
+    /* Required for Webkit, but not for Gecko */
+  }
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.button-adjustments {
+  margin-top: 10px;
+}
