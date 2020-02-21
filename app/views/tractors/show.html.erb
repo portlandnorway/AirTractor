@@ -22,10 +22,12 @@
             <%= simple_form_for([@tractor, @booking]) do |f| %>
               <%= f.input :start_date, as: :string, label: "Dates", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
               <%= f.input :end_date, as: :string, label: '&nbsp;'.html_safe, placeholder: "To", disabled: true, wrapper_html: { class: "inline_field_wrapper" } %>
-              <%= f.submit "Rent this tractor", class: "btn btn-primary btn-lg btn-block btn-booking" %>
+              <%= f.submit "Rent this tractor", class: "btn btn-primary btn-lg btn-block btn-booking mt-4" %>
             <% end %>
           </div>
         </div>
+      <% else %>
+        <h3>Your special note:</h3><h5><%= @tractor.details %></h5>
       <% end %>
     </div>
   </div>
