@@ -1,9 +1,4 @@
 class BookingsController < ApplicationController
-  # def new
-  #   @tractor = Tractor.find(params[:tractor_id])
-  #   @booking = Booking.new
-  # end
-
   def create
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
@@ -14,6 +9,7 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @booking = Booking.find(params[:id])
   end
 
   private

@@ -1,25 +1,24 @@
-<% messages = ["This is a badass!", "Good choice!", "", "Sunglasses on, take a seat in ", "You just booked the tractor ", "You are going for style, with "] %>
+<% messages = ["This is a badass!", "Good choice!", "Ain't she a beauty?", "Sunglasses on, take a seat in ", "You just booked the tractor", "You are going for style, with"] %>
 
 <div class="text-center text-header">
-  <h1><%= messages.sample %> "<%= current_user.bookings.last.tractor.name %>"</h1>
+  <h1><%= messages.sample %> "<%= @booking.tractor.name %>"</h1>
 </div>
 
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12 col-lg-6 align-self-center">
-      <% if current_user.bookings.last.tractor.photo.attached? %>
-        <%= cl_image_tag current_user.bookings.last.tractor.photo.key, class:"booking-photo" %>
+      <% if @booking.tractor.photo.attached? %>
+        <%= cl_image_tag @booking.tractor.photo.key, class:"booking-photo" %>
       <% else  %>
         <img class="booking-photo" src="https://images.unsplash.com/photo-1530267981375-f0de937f5f13?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="">
-        <% end %>
+      <% end %>
     </div>
     <div class="col-sm-12 col-lg-6 align-self-center content-container-booking">
-        <h5>Adress: <%= current_user.bookings.last.tractor.address %>
+        <h5>Address: <%= @booking.tractor.address %>
         <%= link_to '<i class="fas fa-map-marked-alt"></i>'.html_safe, "https://www.google.no/maps/place/#{current_user.bookings.last.tractor.address}" %></h5>
-        <h5>Owner: <%= current_user.bookings.last.tractor.user.first_name %> <%= current_user.bookings.last.tractor.user.last_name %></h5>
-        <h5>Phone: <%= current_user.bookings.last.tractor.user.phone_number %></h5>
-        <h5>Email: <%= current_user.bookings.last.tractor.user.email %></h5>
-        <p>Note from owner: <br /><i><%= current_user.bookings.last.tractor.details %></i></p>
+        <h5>Owner: <%= @booking.tractor.user.first_name %> <%= @booking.tractor.user.last_name %></h5>
+        <h5>Phone: <%= @booking.tractor.user.phone_number %></h5>
+        <p>Note from <%= @booking.tractor.user.first_name %>: <br /><i><%= @booking.tractor.details %></i></p>
       <div class="d-flex justify-content-around adjust-links">
         <%= link_to "My bookings", user_path, class:"btn btn-primary" %>
         <%= link_to "Book more", root_path, class:"btn btn-primary" %>
@@ -28,4 +27,4 @@
   </div>
 </div>
 
-<% flash.now[:alert] = "#{current_user.bookings.last.tractor.reward}kr was added yo you bank account" %>
+<% flash.now[:alert] = "#{@booking.tractor.reward}kr was added to your account" %>
